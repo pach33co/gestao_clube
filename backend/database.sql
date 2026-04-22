@@ -5,6 +5,7 @@ USE gestao_clube;
 
 CREATE TABLE clubes (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    escudo_clube VARCHAR(255),
     nome_clube VARCHAR(255) NOT NULL,
     cidade VARCHAR(100) NOT NULL,
     estado VARCHAR(100) NOT NULL,
