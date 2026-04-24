@@ -24,6 +24,7 @@ export class ClubeController {
                 const data = await ClubeModel.listarClube();
                 return res.status(200).json(data)
             }
+
         } catch (error) {
             return res.status(500).send(error.message)
         }
@@ -73,13 +74,14 @@ export class ClubeController {
         }
     }
 
-    // Controller - Delete
+    // Controller - DELETE
     static async removerClube(req, res) {
         try {
 
             const clubeId = req.params.id;
             await ClubeModel.removerClube(clubeId);
             return res.status(204).send()
+
         } catch (error) {
             return res.status(500).send(error.message)
         }
