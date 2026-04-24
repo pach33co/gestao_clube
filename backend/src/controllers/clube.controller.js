@@ -3,7 +3,6 @@ import { ClubeModel } from "../models/clube.model.js";
 export class ClubeController {
     // Controller -> GET
     static async listarClube(req, res) {
-        
         try {
             
             if (req.query.cidade) {

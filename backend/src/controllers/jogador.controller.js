@@ -3,7 +3,6 @@ import { JogadorModel } from "../models/jogador.model.js";
 export class JogadorController {
     // Controller -> GET
     static async listarJogador(req, res) {
-        
         try {
 
             if (req.query.posicao) {
