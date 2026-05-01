@@ -45,38 +45,38 @@ Para que tudo se conecte perfeitamente e cada entidade consiga ter a sua rota li
 Feito toda essa parte até aqui, fiz os teste dos métodos ( GET, POST, PUT e DELETE ) através do Insomnia, de acordo com os arquivos da pasta controllers.
 
 Clubes:
-post/clubes -> http://localhost:3000/clubes
-get/clubes -> http://localhost:3000/clubes
-get/clubes/id -> http://localhost:3000/clubes/1
-get/clubes/cidade -> http://localhost:3000/clubes?cidade=Rio de Janeiro
-get/clubes/estado -> http://localhost:3000/clubes?estado=Rio de Janeiro
-get/clubes/pais -> http://localhost:3000/clubes?pais=Brasil
-put/clubes/id -> http://localhost:3000/clubes/1
-delete/clubes/id -> http://localhost:3000/clubes/1
+- post/clubes -> http://localhost:3000/clubes
+- get/clubes -> http://localhost:3000/clubes
+- get/clubes/id -> http://localhost:3000/clubes/1
+- get/clubes/cidade -> http://localhost:3000/clubes?cidade=Rio de Janeiro
+- get/clubes/estado -> http://localhost:3000/clubes?estado=Rio de Janeiro
+- get/clubes/pais -> http://localhost:3000/clubes?pais=Brasil
+- put/clubes/id -> http://localhost:3000/clubes/1
+- delete/clubes/id -> http://localhost:3000/clubes/1
 
 Jogadores:
-post/jogadores -> http://localhost:3000/jogadores
-get/jogadores -> http://localhost:3000/jogadores
-get/jogadores/id -> http://localhost:3000/jogadores/1
-get/jogadores/posicao -> http://localhost:3000/jogadores?posicao=Meio-campo
-get/jogadores/categoria -> http://localhost:3000/jogadores?categoria=Profissional
-put/jogadores/id -> http://localhost:3000/jogadores/1
-delete/jogadores/id -> http://localhost:3000/jogadores/1
+- post/jogadores -> http://localhost:3000/jogadores
+- get/jogadores -> http://localhost:3000/jogadores
+- get/jogadores/id -> http://localhost:3000/jogadores/1
+- get/jogadores/posicao -> http://localhost:3000/jogadores?posicao=Meio-campo
+- get/jogadores/categoria -> http://localhost:3000/jogadores?categoria=Profissional
+- put/jogadores/id -> http://localhost:3000/jogadores/1
+- delete/jogadores/id -> http://localhost:3000/jogadores/1
 
 Campeonatos:
-post/campeonatos -> http://localhost:3000/campeonatos
-get/campeonatos -> http://localhost:3000/campeonatos
-get/campeonatos/id -> http://localhost:3000/campeonatos/1
-put/campeonatos/id -> http://localhost:3000/campeonatos/1
-delete/campeonatos/id -> http://localhost:3000/campeonatos/1
+- post/campeonatos -> http://localhost:3000/campeonatos
+- get/campeonatos -> http://localhost:3000/campeonatos
+- get/campeonatos/id -> http://localhost:3000/campeonatos/1
+- put/campeonatos/id -> http://localhost:3000/campeonatos/1
+- delete/campeonatos/id -> http://localhost:3000/campeonatos/1
 
 Partidas:
-post/partidas -> http://localhost:3000/partidas
-get/partidas -> http://localhost:3000/partidas
-get/partidas/id -> http://localhost:3000/partidas/1
-get/partidas/campeonato -> http://localhost:3000/partidas?campeonato=1
-put/partidas/id -> http://localhost:3000/partidas/1
-delete/partidas/id -> http://localhost:3000/partidas/1
+- post/partidas -> http://localhost:3000/partidas
+- get/partidas -> http://localhost:3000/partidas
+- get/partidas/id -> http://localhost:3000/partidas/1
+- get/partidas/campeonato -> http://localhost:3000/partidas?campeonato=1
+- put/partidas/id -> http://localhost:3000/partidas/1
+- delete/partidas/id -> http://localhost:3000/partidas/1
 
 Ao finalizar os arquivos da pasta routes, comecei a desenvolver os arquivosda pasta service que são responáveis pelas condições de negócio do projeto.
 Por exemplo, no arquivo clube.service.js:
