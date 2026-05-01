@@ -39,7 +39,7 @@ Isso é feito para que o backend consiga responder as necessidades do usuário d
 Logo após a controller, fui para a pasta routes, onde importei a Router do express e criei a rota de cada método.
 Nessa pasta eu consigo desenvolver as routes http que serão utilizadas para cada tipo de solicitação do usuário.
 
-Em seguida, precisei atualizar o arquivo app.js que eu tinha feito anteriormente, e importar as routes de cada um.
+Em seguida, precisei atualizar o arquivo app.js que eu tinha feito anteriormente, e importei as routes de cada um.
 Para que tudo se conecte perfeitamente e cada entidade consiga ter a sua rota livre e funcionando.
 
 Feito toda essa parte até aqui, fiz os teste dos métodos ( GET, POST, PUT e DELETE ) através do Insomnia, de acordo com os arquivos da pasta controllers.
@@ -77,3 +77,19 @@ get/partidas/id -> http://localhost:3000/partidas/1
 get/partidas/campeonato -> http://localhost:3000/partidas?campeonato=1
 put/partidas/id -> http://localhost:3000/partidas/1
 delete/partidas/id -> http://localhost:3000/partidas/1
+
+Ao finalizar os arquivos da pasta routes, comecei a desenvolver os arquivosda pasta service que são responáveis pelas condições de negócio do projeto.
+Por exemplo, no arquivo clube.service.js:
+- Determinei que todas informações na hora de criar um clube, eram obrigatórias de serem preenchidas;
+- O formato da imagem do clube, tinha que terminar em .png;
+- O nome do clube não poderia ter menos que 3 letras;
+- O nome do estádio do clube não poderia ter menos que 5 letras;
+- Cidade, estado e país, não poderiam conter números.
+
+Feito esse arquivo, eu retomei para a controller, para determinar os códigos e as mensagens que o usuário iria receber caso cometesse alguma irregularidade dessa.
+Só que acabei ficando com uma quantidade muito grande de if/else if.
+Então criei uma pasta chamada Errors, com um arquivo chamado validation.error.js.
+Dentro deste arquivo criei uma estrutura de class extendida de Error para utilizar nas mensagens do arquivo clube.service.js.
+E no arquivo clube.controller, já que o status (400) estava sendo muito repetido, criei um catch(error) menor onde:
+- Se o retorno tivesse o status (400) o sistema entregaria a mensagem de erro específica da condição;
+- Se o retorno fosse (500) o sistema entregaria a própria mensagem do status.

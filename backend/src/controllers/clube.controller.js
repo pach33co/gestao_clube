@@ -1,20 +1,22 @@
 import { ClubeModel } from "../models/clube.model.js";
+import { ClubeService } from "../service/clube.service.js";
+import { ValidationError } from "../errors/validation.error.js";
 
 export class ClubeController {
     // Controller -> GET
     static async listarClube(req, res) {
         try {
-            
+
             if (req.query.cidade) {
                 const cidade = req.query.cidade;
                 const data = await ClubeModel.listarClubeCidade(cidade);
                 return res.status(200).json(data)
-            
+
             } else if (req.query.estado) {
                 const estado = req.query.estado;
                 const data = await ClubeModel.listarClubeEstado(estado);
                 return res.status(200).json(data)
-            
+
             } else if (req.query.pais) {
                 const pais = req.query.pais;
                 const data = await ClubeModel.listarClubePais(pais);
@@ -34,7 +36,7 @@ export class ClubeController {
 
             const id = req.params.id;
             const data = await ClubeModel.listarClubeId(id);
-            
+
             if (data === undefined) {
                 return res.status(404).send({ "mensagem": "ID não encontrado" })
             }
@@ -51,10 +53,13 @@ export class ClubeController {
         try {
 
             const clube = req.body;
-            const novoClube = await ClubeModel.criarClube(clube);
+            const novoClube = await ClubeService.criarClube(clube);
             return res.status(201).json(novoClube)
-        
+
         } catch (error) {
+            if (error instanceof ValidationError) {
+                return res.status(400).json({ mensagem: error.message })
+            }
             return res.status(500).json({ mensagem: error.message })
         }
     }
