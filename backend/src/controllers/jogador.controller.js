@@ -1,4 +1,6 @@
 import { JogadorModel } from "../models/jogador.model.js";
+import { JogadorService } from "../service/jogador.service.js";
+import { ValidationError } from "../errors/validation.error.js";
 
 export class JogadorController {
     // Controller -> GET
@@ -46,10 +48,13 @@ export class JogadorController {
         try {
 
             const jogador = req.body;
-            const novoJogador = await JogadorModel.criarJogador(jogador);
+            const novoJogador = await JogadorService.criarJogador(jogador);
             return res.status(201).json(novoJogador)
         
         } catch (error) {
+            if (error instanceof ValidationError) {
+                return res.status(400).json({ mensagem: error.message })
+            }
             return res.status(500).json({ mensagem: error.message })
         }
     }
