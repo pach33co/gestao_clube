@@ -1,4 +1,6 @@
 import { CampeonatoModel } from "../models/campeonato.model.js";
+import { CampeonatoService } from "../service/campeonato.service.js";
+import { ValidationError } from "../errors/validation.error.js";
 
 export class CampeonatoController {
     // Controller -> GET
@@ -7,7 +9,7 @@ export class CampeonatoController {
 
             const data = await CampeonatoModel.listarCampeonato();
             return res.status(200).json(data)
-        
+
         } catch (error) {
             return res.status(500).send(error.message)
         }
@@ -18,27 +20,30 @@ export class CampeonatoController {
 
             const id = req.params.id;
             const data = await CampeonatoModel.listarCampeonatoId(id);
-            
+
             if (data === undefined) {
                 return res.status(404).send({ "mensagem": "ID não encontrado" })
             }
 
             return res.status(200).json(data)
-        
+
         } catch (error) {
             return res.status(500).send(error.message)
         }
     }
 
     // Controller - POST
-    static async  criarCampeonato(req, res) {
+    static async criarCampeonato(req, res) {
         try {
 
             const campeonato = req.body;
-            const novoCampeonato = await CampeonatoModel.criarCampeonato(campeonato);
+            const novoCampeonato = await CampeonatoService.criarCampeonato(campeonato);
             return res.status(201).json(novoCampeonato)
-        
+
         } catch (error) {
+            if (error instanceof ValidationError) {
+                return res.status(400).json({ mensagem: error.message })
+            }
             return res.status(500).json({ mensagem: error.message })
         }
     }
@@ -51,7 +56,7 @@ export class CampeonatoController {
             const data = req.body;
             const atualizarCampeonato = await CampeonatoModel.atualizarCampeonato(campeonatoId, data);
             return res.status(200).json(atualizarCampeonato)
-        
+
         } catch (error) {
             return res.status(500).send(error.message)
         }
@@ -64,7 +69,7 @@ export class CampeonatoController {
             const campeonatoId = req.params.id;
             await CampeonatoModel.removerCampeonato(campeonatoId);
             return res.status(204).send()
-        
+
         } catch (error) {
             return res.status(500).send(error.message)
         }

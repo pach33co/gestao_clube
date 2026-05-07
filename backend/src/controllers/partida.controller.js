@@ -1,4 +1,6 @@
 import { PartidaModel } from "../models/partida.model.js";
+import { PartidaService } from "../service/partida.service.js";
+import { ValidationError } from "../errors/validation.error.js";
 
 export class PartidaController {
     // Controller - GET
@@ -42,10 +44,13 @@ export class PartidaController {
         try {
 
             const partida = req.body;
-            const novaPartida = await PartidaModel.criarPartida(partida);
+            const novaPartida = await PartidaService.criarPartida(partida);
             return res.status(201).json(novaPartida)
 
         } catch (error) {
+            if (error instanceof ValidationError) {
+                return res.status(400).json({ mensagem: error.message })
+            }
             return res.status(500).json({ mensagem: error.message })
         }
     }

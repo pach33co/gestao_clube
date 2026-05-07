@@ -93,3 +93,6 @@ Dentro deste arquivo criei uma estrutura de class extendida de Error para utiliz
 E no arquivo clube.controller, já que o status (400) estava sendo muito repetido, criei um catch(error) menor onde:
 - Se o retorno tivesse o status (400) o sistema entregaria a mensagem de erro específica da condição;
 - Se o retorno fosse (500) o sistema entregaria a própria mensagem do status.
+
+Fiz isso em todos os arquivos da pasta service (partida.service, jogador.service, clube.service e campeonato.service)
+
