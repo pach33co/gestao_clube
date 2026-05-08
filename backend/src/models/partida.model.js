@@ -1,7 +1,7 @@
 import { connection } from "../config/database.js";
 
 export class PartidaModel {
-    constructor (id = 0, campeonatoId = 0, clubeA = "", gols_clubeA = 0, clubeB = "", gols_clubeB = 0, estadio = "", horario = null) {
+    constructor(id = 0, campeonatoId = 0, clubeA = "", gols_clubeA = 0, clubeB = "", gols_clubeB = 0, estadio = "", horario = null) {
         this.id = id;
         this.campeonatoId = campeonatoId;
         this.clubeA = clubeA;
@@ -17,7 +17,10 @@ export class PartidaModel {
 
     static async listarPartidas() {
         const [rows] = await connection.execute(
-            `SELECT * FROM partidas`
+            `SELECT partidas.*, clube_a.nome_clube AS nome_clubeA, clube_b.nome_clube AS nome_clubeB
+            FROM partidas
+            JOIN clubes AS clube_a ON partidas.clubeA = clube_a.id
+            JOIN clubes AS clube_b ON partidas.clubeB = clube_b.id`
         );
         return rows;
     }

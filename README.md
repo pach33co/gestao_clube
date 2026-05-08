@@ -108,3 +108,18 @@ Depois dos arquivos do React já criados, organizei as pastas que vou utilizar d
 Nos arquivos da pasta /frontend/src/service é onde eu preciso fazer as chamadas da API.
 Nesse caso, até o momento fiz do arquivo partida.service.js e do campeonato.service.js para listar tanto as partidas quanto os campeonatos.
 
+Desta forma desenvolvi os arquivo Home.jsx e NavBar.jsx onde utilizei os padrões:
+- useState -> para armazenar as informações
+- useEffect -> para utilizar as informações quando carregar
+
+No caso da Home criei a função buscarPartidas para listar as partidas do backend, e na NavBar para listar os campeonatos.
+
+Em seguida, no arquivo do App.jsx, importei esses dois ( Home.jsx e NavBar.jsx ) para começar a estruturar a parte visual da página.
+
+Porém, algo não estava ficando legal no layout!
+Na hora de puxar a partida do backend utilizando o `SELECT * FROM partidas` ele retornava apenas o ID do clube.
+
+Então, para resolver essa questão precisei ajustar no partida.model.js no método GET e adicionar um JOIN:
+`SELECT partidas.*, clube_a.nome_clube AS nome_clubeA, clube_b.nome_clube AS nome_clubeB FROM partidas
+JOIN clubes AS clube_a ON partidas.clubeA = clube_a.id
+JOIN clubes AS clube_b ON partidas.clubeB = clube_b.id`
