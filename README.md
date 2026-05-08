@@ -96,3 +96,15 @@ E no arquivo clube.controller, já que o status (400) estava sendo muito repetid
 
 Fiz isso em todos os arquivos da pasta service (partida.service, jogador.service, clube.service e campeonato.service)
 
+Pronto, até aqui fiz toda estrutura do backend!
+
+Agora pra começar o frontend, preciso utilizar o comando ( npm create vite@latest . -- --template react ) para cirar os arquivos do react dentro da pasta /frontend.
+
+Depois dos arquivos do React já criados, organizei as pastas que vou utilizar dentro do src do /frontend
+- components -> componentes reutilizáveis (botões, cards, tabelas...)
+- pages -> páginas completas (lista de clubes, lista de jogadores...)
+- service -> funções que chamam a API do backend
+
+Nos arquivos da pasta /frontend/src/service é onde eu preciso fazer as chamadas da API.
+Nesse caso, até o momento fiz do arquivo partida.service.js e do campeonato.service.js para listar tanto as partidas quanto os campeonatos.
+
