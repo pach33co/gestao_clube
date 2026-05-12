@@ -10,9 +10,9 @@ function App() {
 
   return (
     <div>
-    <NavBar />
+    <NavBar onSelecionarCampeonato={setCampeonatoSelecionado} />
     <Home campeonato={campeonatoSelecionado} />
-    <SideBar onSelecionarCampeonato={setCampeonatoSelecionado}/>
+    <SideBar />
     <Footer />
     </div>
   )

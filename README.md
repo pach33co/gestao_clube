@@ -124,11 +124,11 @@ Então, para resolver essa questão precisei ajustar no partida.model.js no mét
 JOIN clubes AS clube_a ON partidas.clubeA = clube_a.id
 JOIN clubes AS clube_b ON partidas.clubeB = clube_b.id`
 
-Em seguida, criei o arquivo Sidebar.jsx com uma estrutura parecida com a da NavBar.jsx, porém, com a funcionalidade de filtro por campeonato.
-Para isso criei uma constante dentro da function App ( const [campeonatoSelecionado, setCampeonatoSelecionado] = useState(null) ) onde o campeonatoSelecionado eu chamei na Home e o setCampeonatoSelecionado eu chamei no SideBar, e passei ele como props para cada um ( props = é a forma de passar informações de um componente pai para um filho ).
+Em seguida, criei o arquivo Sidebar.jsx, com a funcionalidade de listar os jogadores recém cadastrados no sistema ( como se fossem jogadores de destaque ) e adicionei a funcionalidade de filtro por campeonato na NavBar.jsx.
+Para isso criei uma constante dentro da function App ( const [campeonatoSelecionado, setCampeonatoSelecionado] = useState(null) ) onde o campeonatoSelecionado eu chamei na Home e o setCampeonatoSelecionado eu chamei na NavBar, e passei ele como props para cada um ( props = é a forma de passar informações de um componente pai para um filho ).
 Nesse caso:
 - O App.jsx guarda o campeonatoSelecionado
-- O Sidebar.jsx muda o campeonato quando clica
+- A NavBar.jsx muda o campeonato quando clica
 - O Home.jsx filtra as partidas de acordo com o campeonatoSelecionado
 
 Além disso na pasta service, precisei criar a function listarPartidasPorCampeonato passando o campeonatoId, para que a rota certa fosse executada de acordo com a ação do usuário ao clicar no campeonato correspondente.

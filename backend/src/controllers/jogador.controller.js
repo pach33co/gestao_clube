@@ -11,7 +11,7 @@ export class JogadorController {
                 const posicao = req.query.posicao;
                 const data = await JogadorModel.listarJogadorPosicao(posicao);
                 return res.status(200).json(data)
-            
+
             } else if (req.query.categoria) {
                 const categoria = req.query.categoria;
                 const data = await JogadorModel.listarJogadorCategoria(categoria);
@@ -32,12 +32,23 @@ export class JogadorController {
             const id = req.params.id;
             const data = await JogadorModel.listarJogadorId(id);
 
-            if ( data === undefined ) {
+            if (data === undefined) {
                 return res.status(404).send({ "mensagem": "ID não encontrado" })
             }
 
             return res.status(200).json(data)
-        
+
+        } catch (error) {
+            return res.status(500).send(error.message)
+        }
+    }
+
+    static async listarJogadorRecente(req, res) {
+        try {
+
+            const data = await JogadorModel.listarJogadorRecente();
+
+            return res.status(200).json(data)
         } catch (error) {
             return res.status(500).send(error.message)
         }
@@ -50,7 +61,7 @@ export class JogadorController {
             const jogador = req.body;
             const novoJogador = await JogadorService.criarJogador(jogador);
             return res.status(201).json(novoJogador)
-        
+
         } catch (error) {
             if (error instanceof ValidationError) {
                 return res.status(400).json({ mensagem: error.message })
@@ -67,12 +78,12 @@ export class JogadorController {
             const data = req.body;
             const atualizarJogador = await JogadorModel.atualizarJogador(jogadorId, data);
             return res.status(200).json(atualizarJogador)
-        
+
         } catch (error) {
             return res.status(500).send(error.message)
         }
     }
-    
+
     // Controller - DELETE
     static async removerJogador(req, res) {
         try {
@@ -80,7 +91,7 @@ export class JogadorController {
             const jogadorId = req.params.id;
             await JogadorModel.removerJogador(jogadorId);
             return res.status(204).send()
-        
+
         } catch (error) {
             return res.status(500).send(error.message)
         }

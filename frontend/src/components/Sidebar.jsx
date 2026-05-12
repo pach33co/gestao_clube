@@ -1,25 +1,25 @@
 import { useState, useEffect } from 'react';
-import { listarCampeonatos } from '../service/campeonato.service.js';
+import { listarJogadorRecente } from '../service/jogador.service.js';
 
-function SideBar({onSelecionarCampeonato}) {
-    const [campeonatos, setCampeonatos] = useState([]);
+function SideBar() {
 
-    async function buscarCampeonatos() {
-        const data = await listarCampeonatos()
-        setCampeonatos(data)
-    };
+    const [jogadores, setJogadores] = useState([])
+
+    async function buscarJogadores() {
+        const data = await listarJogadorRecente()
+        setJogadores(data)
+    }
 
     useEffect(() => {
-        buscarCampeonatos()
-    }, []);
+        buscarJogadores()
+    }, [])
 
     return (
         <div>
             {
-                campeonatos.map(campeonato => (
-                    <div key={campeonato.id}>
-                        <p onClick={() => onSelecionarCampeonato(campeonato.id)}>
-                            {campeonato.nome}</p>
+                jogadores.map(jogador => (
+                    <div key={jogador.id}>
+                        <p>{jogador.nome}</p>
                     </div>
                 ))
             }

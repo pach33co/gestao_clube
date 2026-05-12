@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { listarCampeonatos } from '../service/campeonato.service.js';
 
-function NavBar() {
+function NavBar({onSelecionarCampeonato}) {
     const [campeonatos, setCampeonatos] = useState([]);
 
     async function buscarCampeonatos() {
@@ -18,7 +18,8 @@ function NavBar() {
             {
                 campeonatos.map(campeonato => (
                     <div key={campeonato.id}>
-                        <p>{campeonato.nome}</p>
+                        <p onClick={() => onSelecionarCampeonato(campeonato.id)}>
+                            {campeonato.nome}</p>
                     </div>
                 ))
             }

@@ -5,6 +5,8 @@ const router = Router();
 
 router.get('/jogadores', JogadorController.listarJogador);
 
+router.get('/jogadores/recentes', JogadorController.listarJogadorRecente);
+
 router.get('/jogadores/:id', JogadorController.listarJogadorId);
 
 router.post('/jogadores', JogadorController.criarJogador);

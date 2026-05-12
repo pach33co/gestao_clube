@@ -56,6 +56,17 @@ export class JogadorModel {
         return rows;
     }
 
+    // Listar Jogador mais Recente
+
+    static async listarJogadorRecente() {
+        const [rows] = await connection.execute(
+            `SELECT * FROM jogadores
+            ORDER BY id DESC
+            LIMIT 5`
+        );
+        return rows;
+    }
+
     // Método HTTP POST
 
     static async criarJogador(jogador) {

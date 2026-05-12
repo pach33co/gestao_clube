@@ -39,7 +39,12 @@ export class PartidaModel {
 
     static async listarPartidaCampeonato(campeonatoId) {
         const [rows] = await connection.execute(
-            `SELECT * FROM partidas WHERE campeonatoId = ?`,
+            `SELECT partidas.*, clube_a.nome_clube AS nome_clubeA,
+            clube_b.nome_clube AS nome_clubeB
+            FROM partidas
+            JOIN clubes AS clube_a ON partidas.clubeA = clube_a.id
+            JOIN clubes AS clube_b ON partidas.clubeB = clube_b.id
+            WHERE campeonatoId = ?`,
             [campeonatoId]
         );
         return rows;
