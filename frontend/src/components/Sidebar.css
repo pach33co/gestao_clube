@@ -1,0 +1,35 @@
+.sidebar {
+    width: 250px;
+    min-width: 250px;
+    background-color: #16213e;
+    padding: 20px;
+    border-right: 1px solid #0f3460;
+}
+
+.sidebar h3 {
+    color: #a0a0b0;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.sidebar p {
+    color: #ffffff;
+    font-size: 14px;
+    padding: 8px 0;
+    border-bottom: 1px solid #0f3460;
+}
+
+.sidebar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.sidebar div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+}

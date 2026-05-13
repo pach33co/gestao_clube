@@ -17,7 +17,8 @@ export class PartidaModel {
 
     static async listarPartidas() {
         const [rows] = await connection.execute(
-            `SELECT partidas.*, clube_a.nome_clube AS nome_clubeA, clube_b.nome_clube AS nome_clubeB
+            `SELECT partidas.*, clube_a.nome_clube AS nome_clubeA, clube_b.nome_clube AS nome_clubeB,
+            clube_a.escudo_clube AS escudo_clubeA, clube_b.escudo_clube AS escudo_clubeB
             FROM partidas
             JOIN clubes AS clube_a ON partidas.clubeA = clube_a.id
             JOIN clubes AS clube_b ON partidas.clubeB = clube_b.id`
@@ -39,8 +40,8 @@ export class PartidaModel {
 
     static async listarPartidaCampeonato(campeonatoId) {
         const [rows] = await connection.execute(
-            `SELECT partidas.*, clube_a.nome_clube AS nome_clubeA,
-            clube_b.nome_clube AS nome_clubeB
+            `SELECT partidas.*, clube_a.nome_clube AS nome_clubeA, clube_b.nome_clube AS nome_clubeB,
+            clube_a.escudo_clube AS escudo_clubeA, clube_b.escudo_clube AS escudo_clubeB
             FROM partidas
             JOIN clubes AS clube_a ON partidas.clubeA = clube_a.id
             JOIN clubes AS clube_b ON partidas.clubeB = clube_b.id

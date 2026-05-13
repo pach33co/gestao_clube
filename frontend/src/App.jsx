@@ -3,6 +3,7 @@ import Home from './pages/Home.jsx';
 import NavBar from './components/NavBar.jsx';
 import Footer from './components/Footer.jsx';
 import SideBar from './components/Sidebar.jsx';
+import './App.css'
 
 function App() {
 
@@ -10,10 +11,18 @@ function App() {
 
   return (
     <div>
-    <NavBar onSelecionarCampeonato={setCampeonatoSelecionado} />
-    <Home campeonato={campeonatoSelecionado} />
-    <SideBar />
-    <Footer />
+
+        <NavBar onSelecionarCampeonato={setCampeonatoSelecionado} />
+
+      <div className="conteudoPrincipal">
+
+        <Home campeonato={campeonatoSelecionado} />
+        <SideBar />
+
+      </div>
+
+      <Footer />
+
     </div>
   )
 }

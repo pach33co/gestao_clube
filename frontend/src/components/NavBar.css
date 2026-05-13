@@ -1,0 +1,24 @@
+.navbar {
+    background-color: #16213e;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #0f3460;
+}
+
+.logo {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.navbar-campeonatos {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar-social {
+    display: flex;
+    gap: 15px;
+}

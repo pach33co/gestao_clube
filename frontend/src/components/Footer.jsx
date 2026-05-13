@@ -1,7 +1,8 @@
+import './Footer.css';
 
 function Footer() {
     return (
-        <div>
+        <div className="footer">
             <div>
                 <p className="logoFooter">Club Management</p>
             </div>

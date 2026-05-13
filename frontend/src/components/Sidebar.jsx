@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { listarJogadorRecente } from '../service/jogador.service.js';
+import './Sidebar.css'
 
 function SideBar() {
 
@@ -15,10 +16,11 @@ function SideBar() {
     }, [])
 
     return (
-        <div>
+        <div className="sidebar">
             {
                 jogadores.map(jogador => (
                     <div key={jogador.id}>
+                        <img src={jogador.caminho_imagem} alt={jogador.nome} />
                         <p>{jogador.nome}</p>
                     </div>
                 ))
