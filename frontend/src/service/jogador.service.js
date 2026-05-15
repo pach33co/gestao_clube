@@ -4,3 +4,10 @@ export async function listarJogadorRecente() {
     
     return data
 }
+
+export async function listarJogadores() {
+    const response = await fetch('http://localhost:3000/jogadores')
+    const data = await response.json()
+    
+    return data
+};

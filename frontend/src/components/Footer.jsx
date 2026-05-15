@@ -1,4 +1,5 @@
 import './Footer.css';
+import { FaYoutube, FaInstagram, FaTiktok } from 'react-icons/fa';
 
 function Footer() {
     return (
@@ -12,10 +13,9 @@ function Footer() {
                 <p>Outras Informações</p>
             </div>
             <div>
-                <p>YouTube</p>
-                <p>Instagram</p>
-                <p>TikTok</p>
-                <p>Twitter</p>
+            <FaYoutube size={20} color="#a0a0b0" />
+            <FaInstagram size={18} color="#a0a0b0" />
+            <FaTiktok size={18} color="#a0a0b0" />
             </div>
         </div>
 
