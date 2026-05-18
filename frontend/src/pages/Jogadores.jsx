@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { listarJogadores } from '../service/jogador.service.js';
+import './Jogadores.css';
 
 function Jogadores() {
     const [jogadores, setJogadores] = useState([]);

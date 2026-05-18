@@ -1,0 +1,32 @@
+.clubes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.clube-card {
+    background-color: #16213e;
+    border-radius: 8px;
+    padding: 15px;
+    width: 200px;
+    text-align: center;
+    border: 1px solid #0f3460;
+}
+
+.clube-card img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.clube-card p {
+    color: #ffffff;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.clube-card {
+    align-items: center;
+}

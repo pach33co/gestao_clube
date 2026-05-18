@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { listarClubes } from '../service/clube.service.js';
+import './Clubes.css';
 
 function Clubes() {
     const [clubes, setClubes] = useState([]);

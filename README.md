@@ -78,7 +78,7 @@ Partidas:
 - put/partidas/id -> http://localhost:3000/partidas/1
 - delete/partidas/id -> http://localhost:3000/partidas/1
 
-Ao finalizar os arquivos da pasta routes, comecei a desenvolver os arquivosda pasta service que são responáveis pelas condições de negócio do projeto.
+Ao finalizar os arquivos da pasta routes, comecei a desenvolver os arquivos da pasta service que são responsáveis pelas condições de negócio do projeto.
 Por exemplo, no arquivo clube.service.js:
 - Determinei que todas informações na hora de criar um clube, eram obrigatórias de serem preenchidas;
 - O formato da imagem do clube, tinha que terminar em .png;
@@ -132,3 +132,27 @@ Nesse caso:
 - O Home.jsx filtra as partidas de acordo com o campeonatoSelecionado
 
 Além disso na pasta service, precisei criar a function listarPartidasPorCampeonato passando o campeonatoId, para que a rota certa fosse executada de acordo com a ação do usuário ao clicar no campeonato correspondente.
+
+Para melhorar a experiência visual, adicionei imagens dos escudos dos clubes e fotos dos jogadores. As imagens ficam armazenadas na pasta /public do frontend, e os caminhos são salvos no banco de dados. Para trazer os escudos junto com as partidas, precisei atualizar o JOIN no partida.model.js:
+
+`SELECT partidas.*, clube_a.nome_clube AS nome_clubeA, clube_b.nome_clube AS nome_clubeB, clube_a.escudo_clube AS escudo_clubeA, clube_b.escudo_clube AS escudo_clubeB FROM partidas JOIN clubes AS clube_a ON partidas.clubeA = clube_a.id JOIN clubes AS clube_b ON partidas.clubeB = clube_b.id`
+
+Também implementei o React Router para navegação entre páginas:
+- npm install react-router-dom ( para instalar o React Router )
+
+Com isso criei três páginas:
+- Home.jsx -> página inicial com a lista de partidas
+- Clubes.jsx -> lista todos os clubes cadastrados
+- Jogadores.jsx -> lista todos os jogadores cadastrados
+
+E adicionei os Links de navegação na NavBar para acessar cada página.
+
+Para estilizar o projeto utilizei CSS puro, criando um arquivo CSS para cada componente:
+- NavBar.css
+- Sidebar.css
+- Footer.css
+- Home.css
+- Clubes.css
+- Jogadores.css
+
+Além disso instalei a biblioteca React Icons ( npm install react-icons ) para adicionar os ícones das redes sociais na NavBar e no Footer.
